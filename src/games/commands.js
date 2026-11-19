@@ -190,6 +190,7 @@ const run = {
     const lines = Object.entries(GAMES)
       .filter(([k]) => links[k])
       .map(([k, g]) => `${g.emoji} **${g.label}:** ${g.show(links[k])}`);
+    if (links.roblox) lines.unshift(`🟥 **Roblox:** ${links.roblox.displayName} (@${links.roblox.name}) ✅ verified`);
     const embed = new EmbedBuilder()
       .setColor(0x5865f2)
       .setAuthor({ name: `${user.username}'s game accounts`, iconURL: user.displayAvatarURL() })

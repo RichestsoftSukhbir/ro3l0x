@@ -11,7 +11,7 @@ if (!process.env.DISCORD_TOKEN) {
 }
 
 const I = GatewayIntentBits;
-const BASE_INTENTS = [I.Guilds, I.GuildMessages, I.GuildMessageReactions, I.DirectMessages];
+const BASE_INTENTS = [I.Guilds, I.GuildMessages, I.GuildMessageReactions, I.DirectMessages, I.GuildVoiceStates, I.GuildInvites, I.GuildModeration];
 // Privileged intents must be switched on in the Developer Portal (Bot tab).
 const PRIVILEGED = [I.GuildMembers, I.MessageContent];
 
@@ -19,7 +19,9 @@ const PRIVILEGED = [I.GuildMembers, I.MessageContent];
 const commands = new Map();
 const buttons = new Map();
 const selects = new Map();
+const modals = new Map();
 for (const m of modules) {
+  for (const [prefix, fn] of Object.entries(m.modals || {})) modals.set(prefix, fn);
   for (const [name, fn] of Object.entries(m.execute || {})) commands.set(name, fn);
   for (const [prefix, fn] of Object.entries(m.buttons || {})) buttons.set(prefix, fn);
   for (const [id, fn] of Object.entries(m.selects || {})) selects.set(id, fn);
@@ -64,6 +66,10 @@ function createClient(intents) {
         return await buttons.get(prefix)?.(i, parts);
       }
       if (i.isStringSelectMenu()) return await selects.get(i.customId)?.(i);
+      if (i.isModalSubmit()) {
+        const [prefix, ...parts] = i.customId.split(":");
+        return await modals.get(prefix)?.(i, parts);
+      }
     } catch (err) {
       await showError(i, err);
     }
@@ -76,6 +82,15 @@ function createClient(intents) {
     [Events.GuildMemberRemove]: "guildMemberRemove",
     [Events.MessageReactionAdd]: "messageReactionAdd",
     [Events.MessageReactionRemove]: "messageReactionRemove",
+    [Events.MessageDelete]: "messageDelete",
+    [Events.MessageUpdate]: "messageUpdate",
+    [Events.GuildMemberUpdate]: "guildMemberUpdate",
+    [Events.VoiceStateUpdate]: "voiceStateUpdate",
+    [Events.ChannelCreate]: "channelCreate",
+    [Events.ChannelDelete]: "channelDelete",
+    [Events.GuildBanAdd]: "guildBanAdd",
+    [Events.InviteCreate]: "inviteCreate",
+    [Events.InviteDelete]: "inviteDelete",
   };
   for (const [event, key] of Object.entries(events)) {
     const handlers = modules.map((m) => m.events?.[key]).filter(Boolean);

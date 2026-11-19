@@ -1,6 +1,6 @@
 # RO3L0X: the free all-in-one Discord bot
 
-Leveling, economy, games, moderation, giveaways, welcome messages, social alerts, game stats and free-game alerts in one bot. Other bots charge for many of these features; here they're all free. No premium tier, and no paid APIs.
+Leveling, economy, games, moderation, tickets, verification, logs, 24/7 radio, Roblox verification, giveaways, welcome messages, social alerts, game stats and free-game alerts in one bot. Other bots charge for many of these features; here they're all free. No premium tier, and no paid APIs.
 
 Run `/help` in Discord for a menu of every command.
 
@@ -13,10 +13,15 @@ Run `/help` in Discord for a menu of every command.
 | 🎲 **Games** | `/trivia` (wins coins), `/rps` (vs bot or a friend), `/8ball`, `/roll`, `/choose`, `/counting set / off` |
 | 🏡 **Community** | `/welcome set / goodbye / test / off`, `/autorole`, `/rolemenu` (button roles), `/giveaway start / end / reroll / list`, `/poll`, `/remind me / list / cancel`, `/starboard`, `/birthday` |
 | 🛡️ **Moderation** | `/warn`, `/warnings`, `/clearwarns`, `/timeout`, `/untimeout`, `/kick`, `/ban`, `/unban`, `/purge`, `/slowmode`, `/modlog`, `/automod settings / badword-add / badword-remove / status` |
+| 🟥 **Roblox** | `/roblox verify` (ownership check), `/roblox profile / game / group`, `/roblox setup` (verified role + nicknames), `/roblox bind` (group rank → Discord role), `/roblox update` |
+| 📻 **Radio & voice** | `/radio play / search / now / volume / stop / 247` (thousands of free internet radio stations), `/tempvoice` (join-to-create rooms) |
+| 🎫 **Server tools** | `/ticket` (tickets + transcripts), `/verification` (Verify button), `/logs` (deletes, edits, joins, roles, voice, bans), `/suggest` + `/suggestions` |
+| 🧰 **Utility** | `/userinfo`, `/serverinfo`, `/avatar`, `/afk`, `/announce` (embed builder), `/autoresponse` (custom commands), `/sticky`, `/schedule`, `/statchannels` |
+| 🛡️ **Protection & social** | `/antiraid`, `/lockdown`, `/invites`, `/confess` + `/confessions`, `/meme`, `/animal`, `/joke` |
 | 🔔 **Alerts** | `/alerts youtube` (new uploads), `/alerts twitch` (go-live), `/alerts list / remove` |
 | 🎮 **Game stats** | `/link`, `/accounts`, `/unlink`, `/steam profile / games`, `/chess`, `/minecraft player / server / setserver`, `/leaderboard` |
 | 🎁 **Deals** | `/deals free` (Epic + Steam), `/deals steam`, `/deals setup` (auto-post), `/deals off` |
-| 💡 **Creator** | `/idea`, `/titles`, `/hooks`, `/rate`, `/formats`, `/song`, `/roblox`, `/random`, `/tip` |
+| 💡 **Creator** | `/idea`, `/titles`, `/hooks`, `/rate`, `/formats`, `/song`, `/robloxideas`, `/random`, `/tip` |
 
 Admin commands are hidden from regular members by default. Server owners can change who sees them under *Server Settings → Integrations → RO3L0X*.
 
@@ -39,10 +44,10 @@ Needs Node 18+ (this project uses 24.14.0, see `.nvmrc`).
 Replace `CLIENT_ID` with your Application ID:
 
 ```
-https://discord.com/oauth2/authorize?client_id=CLIENT_ID&scope=bot+applications.commands&permissions=564049733872726
+https://discord.com/oauth2/authorize?client_id=CLIENT_ID&scope=bot+applications.commands&permissions=564049888013558
 ```
 
-That grants: View Channels, Send Messages, Embed Links, Attach Files, Read Message History, Add Reactions, Use External Emojis, Manage Messages, Manage Channels (for slowmode), Manage Roles, Kick, Ban, Timeout Members, Create Polls.
+That grants: View Channels, Send Messages, Embed Links, Attach Files, Read Message History, Add Reactions, Use External Emojis, Manage Messages, Manage Channels, Manage Roles, Manage Nicknames, Manage Server (for invite tracking), View Audit Log, Kick, Ban, Timeout Members, Create Polls, Connect, Speak, Move Members.
 
 **Important:** In *Server Settings → Roles*, drag the bot's role **above** any role you want it to give (level rewards, shop roles, auto-roles, role menus) and above members you want it to moderate.
 
@@ -73,7 +78,7 @@ Set `GUILD_ID` in `.env` to update commands instantly on one server. Leave it em
 
 ## Data sources (all free)
 
-YouTube RSS feeds • Twitch Helix API • Open Trivia DB • Mojang / PlayerDB • mcstatus.io / mcsrvstat.us • Steam Web API • Chess.com & Lichess APIs • Epic Games Store feed • CheapShark
+Roblox web APIs • Radio Browser • meme-api, dog.ceo, TheCatAPI, randomfox, JokeAPI • YouTube RSS feeds • Twitch Helix API • Open Trivia DB • Mojang / PlayerDB • mcstatus.io / mcsrvstat.us • Steam Web API • Chess.com & Lichess APIs • Epic Games Store feed • CheapShark
 
 Everything is saved as JSON in `data/`. Back that folder up if you move the bot.
 

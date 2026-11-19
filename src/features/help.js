@@ -64,13 +64,58 @@ const PAGES = {
       "`/deals setup` auto-post free games to a channel *(admin)*",
     ],
   },
+  roblox: {
+    title: "🟥 Roblox",
+    lines: [
+      "`/roblox verify` link your Roblox account (proves you own it) • `/roblox unlink`",
+      "`/roblox profile` avatar, status, friends, groups • `/roblox game` live players & visits • `/roblox group`",
+      "`/roblox setup` verified role & nicknames *(admin)* • `/roblox bind` roles from group ranks *(admin)*",
+      "`/roblox update` re-sync roles • `/roblox binds`",
+    ],
+  },
+  music: {
+    title: "📻 Radio & voice",
+    lines: [
+      "`/radio play` 24/7 internet radio by genre, station or country",
+      "`/radio search` pick from thousands of stations • `/radio now` `/radio volume` `/radio stop`",
+      "`/radio 247` stay in voice even when empty *(admin)*",
+      "`/tempvoice setup` join-to-create voice rooms *(admin)*",
+    ],
+  },
+  tools: {
+    title: "🎫 Tickets & server tools",
+    lines: [
+      "`/ticket setup` support tickets with transcripts *(admin)* • `/ticket close|add|remove`",
+      "`/verification setup` Verify button for new members *(admin)*",
+      "`/logs` deleted/edited messages, joins, roles, voice, bans *(admin)*",
+      "`/suggest` • `/suggestions channel|accept|deny` *(admin)*",
+    ],
+  },
+  utility: {
+    title: "🧰 Utility",
+    lines: [
+      "`/userinfo` `/serverinfo` `/avatar` `/afk`",
+      "`/announce` embed announcement builder *(staff)*",
+      "`/autoresponse` custom commands & auto-replies *(admin)*",
+      "`/sticky` sticky messages • `/schedule` repeating messages • `/statchannels` member counters *(admin)*",
+    ],
+  },
+  protection: {
+    title: "🛡️ Protection & social",
+    lines: [
+      "`/antiraid` mass-join protection & minimum account age *(admin)*",
+      "`/lockdown channel|server` *(staff)*",
+      "`/invites check|top|log` invite tracking",
+      "`/confess` anonymous confessions • `/meme` `/animal` `/joke`",
+    ],
+  },
   alerts: {
     title: "🔔 Social alerts",
     lines: ["`/alerts youtube` post new uploads *(admin)*", "`/alerts twitch` post when someone goes live *(admin)*", "`/alerts list|remove`"],
   },
   creator: {
     title: "💡 Creator tools",
-    lines: ["`/idea` viral ideas • `/titles` • `/hooks` • `/rate` your idea", "`/formats` • `/song` • `/roblox` game ideas • `/random` • `/tip`"],
+    lines: ["`/idea` viral ideas • `/titles` • `/hooks` • `/rate` your idea", "`/formats` • `/song` • `/robloxideas` • `/random` • `/tip`"],
   },
 };
 

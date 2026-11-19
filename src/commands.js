@@ -40,7 +40,7 @@ export const creatorCommands = [
     .addStringOption((o) => o.setName("theme").setDescription("What's it about? (optional)").setMaxLength(30)),
 
   new SlashCommandBuilder()
-    .setName("roblox")
+    .setName("robloxideas")
     .setDescription("Roblox game ideas that could blow up")
     .addStringOption((o) =>
       o.setName("genre").setDescription("Genre (optional)").addChoices(
@@ -60,7 +60,7 @@ export const handlers = {
   rate: { read: (i) => ({ idea: i.options.getString("idea") }), run: gen.rate },
   formats: { read: (i) => ({ platform: i.options.getString("platform") }), run: gen.formats },
   song: { read: (i) => ({ genre: i.options.getString("genre"), theme: i.options.getString("theme") }), run: gen.song },
-  roblox: { read: (i) => ({ genre: i.options.getString("genre") }), run: gen.roblox },
+  robloxideas: { read: (i) => ({ genre: i.options.getString("genre") }), run: gen.roblox },
   random: { read: () => ({}), run: gen.random },
   tip: { read: () => ({}), run: gen.tip },
 };
